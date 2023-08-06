@@ -21,19 +21,34 @@ const Homepage = () => {
       </Title>
       <Row>
         <Col span={12}>
-          <Statistic title="Total Cryptocurrencies" value={5} />
+          <Statistic
+            title="Total Cryptocurrencies"
+            value={globalStats.totalCoins}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Exchanges" value={millify(5)} />
+          <Statistic
+            title="Total Exchanges"
+            value={millify(globalStats.totalExchanges)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Markets" value={millify(5)} />
+          <Statistic
+            title="Total Markets"
+            value={millify(globalStats.totalMarkets)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total Market Cap" value={millify(5)} />
+          <Statistic
+            title="Total Market Cap"
+            value={millify(globalStats.totalMarketCap)}
+          />
         </Col>
         <Col span={12}>
-          <Statistic title="Total 24h Volume" value={millify(5)} />
+          <Statistic
+            title="Total 24h Volume"
+            value={millify(globalStats.total24hVolume)}
+          />
         </Col>
       </Row>
       <div className="home-heading-container">

@@ -14,7 +14,11 @@ import {
   NumberOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
-import { useGetCryptoDetailsQuery } from "../services/cryptoapi";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from "../services/cryptoapi";
+import { LineChart } from "./";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -23,8 +27,11 @@ const CryptoDetails = () => {
   const { coinId } = useParams();
   const [timePeriod, setTimePeriod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({
+    coinId,
+    timePeriod,
+  });
   const cryptoDetails = data?.data?.coin;
-  console.log(cryptoDetails);
 
   if (isFetching) {
     return "loading...";
@@ -96,6 +103,11 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
+      <LineChart
+        coinHistory={coinHistory}
+        currentPrice={millify(cryptoDetails.price)}
+        coinName={cryptoDetails.name}
+      />
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
@@ -104,8 +116,8 @@ const CryptoDetails = () => {
             </Title>
             <p>An overview showing stats of {cryptoDetails.name}.</p>
           </Col>
-          {stats.map(({ icon, title, value }, i) => (
-            <Col className="coin-stats" key={i}>
+          {stats.map(({ icon, title, value }) => (
+            <Col className="coin-stats" key={title}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>
@@ -121,8 +133,8 @@ const CryptoDetails = () => {
             </Title>
             <p>An overview showing detailed stats of {cryptoDetails.name}.</p>
           </Col>
-          {genericStats.map(({ icon, title, value }, i) => (
-            <Col className="coin-stats" key={i}>
+          {genericStats.map(({ icon, title, value }) => (
+            <Col className="coin-stats" key={title}>
               <Col className="coin-stats-name">
                 <Text>{icon}</Text>
                 <Text>{title}</Text>

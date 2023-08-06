@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import HTMLReactParser from "html-react-parser";
 import millify from "millify";
 import { Typography, Row, Col, Select } from "antd";
 import {
@@ -8,17 +7,14 @@ import {
   DollarCircleOutlined,
   FundOutlined,
   ExclamationCircleOutlined,
-  StopOutlined,
   TrophyOutlined,
-  CheckOutlined,
   NumberOutlined,
-  ThunderboltOutlined,
 } from "@ant-design/icons";
 import {
   useGetCryptoDetailsQuery,
   useGetCryptoHistoryQuery,
 } from "../services/cryptoapi";
-import { LineChart } from "./";
+import { LineChart, Loader } from "./";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -34,7 +30,7 @@ const CryptoDetails = () => {
   const cryptoDetails = data?.data?.coin;
 
   if (isFetching) {
-    return "loading...";
+    return <Loader />;
   }
 
   const time = ["3h", "24h", "7d", "30d", "3m", "1y", "3y", "5y"];

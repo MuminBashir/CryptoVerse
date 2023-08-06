@@ -5,6 +5,8 @@ import moment from "moment";
 import { useGetCryptoNewsQuery } from "../services/cryptonewsapi";
 import { useGetCryptosQuery } from "../services/cryptoapi";
 
+import { Loader } from "./";
+
 const { Text, Title } = Typography;
 const { Option } = Select;
 
@@ -21,7 +23,7 @@ const News = (props) => {
   });
 
   if (isFetching) {
-    return "loading...";
+    return <Loader />;
   }
 
   return (

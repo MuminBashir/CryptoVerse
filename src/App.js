@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { Layout, Typography, Space } from "antd";
+import { CrownOutlined } from "@ant-design/icons";
 
 import {
   Navbar,
@@ -37,7 +38,14 @@ const App = () => {
             level={5}
             style={{ color: "white", textAlign: "center" }}
           >
-            Cryptoverse <br /> &copy; All rights reserved
+            Cryptoverse | &copy; All rights reserved <br /> Developed by{" "}
+            <a
+              href="https://github.com/MuminBashir"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <CrownOutlined /> Mumin Bashir
+            </a>
           </Typography.Title>
           <Space>
             <Link to="/">Home</Link>

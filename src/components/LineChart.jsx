@@ -17,7 +17,7 @@ const LineChart = (props) => {
   const { coinHistory, currentPrice, coinName } = props;
   const coinPrice = [];
   const coinTimestamp = [];
-  console.log(coinHistory);
+
   for (let i = 0; i < coinHistory?.data?.history?.length; i++) {
     coinPrice.push(coinHistory.data.history[i].price);
     coinTimestamp.push(

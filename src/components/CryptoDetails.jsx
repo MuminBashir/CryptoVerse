@@ -81,7 +81,11 @@ const CryptoDetails = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title className="coin-name" level={2}>
-          <img src={cryptoDetails.iconUrl} className="crypto-image" />
+          <img
+            src={cryptoDetails.iconUrl}
+            className="crypto-image"
+            alt="crypto"
+          />
           {cryptoDetails.name} Stats
         </Title>
         <p>
